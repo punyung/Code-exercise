@@ -1,0 +1,21 @@
+---
+title: "data analysis"
+author: "punyung"
+date: "2023-06-21"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+## Mutation data analysis
+Loading mutation data
+```{r}
+data_mut <- readRDS("data/expr_sclc_ucologne_2015.rds")
+```
+1.Identify top 10 most frequently mutated gene. Identify samples whose mutation count is in the 80 to 90 percentile.
+```{r}
+
+```
