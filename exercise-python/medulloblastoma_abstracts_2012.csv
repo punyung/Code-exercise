@@ -1,0 +1,509 @@
+Abstract
+1. Small-molecule antagonists of Gli function.
+"Ardecky R(1), Magnuson GK(1), Zou J(1), Ganji SR(1), Brown B(1), Ngo T(1), Lee 
+J(1), Zeng FY(1), Sun Q(1), Stonich D(1), Salaniwal S(1), Sakata T(2), Rack 
+PG(2), Casabar JKT(2), Mangravita-Novo A(3), Smith LH(3), Sergienko E(1), Chung 
+TDY(1), Pinkerton AB(1), Pass I(1), Chen JK(2)."
+"In: Probe Reports from the NIH Molecular Libraries Program [Internet]. Bethesda 
+(MD): National Center for Biotechnology Information (US); 2010–.
+2012 Dec 17 [updated 2014 May 13]."
+"Author information:
+(1)Sanford-Burnham Center for Chemical Genomics at Sanford-Burnham Medical 
+Research Institute, La Jolla, California 92037, USA
+(2)Department of Chemical and Systems Biology, Stanford University, Stanford, 
+California 94305, USA.
+(3)Sanford-Burnham Center for Chemical Genomics at Sanford-Burnham Medical 
+Research Institute, Orlando, Florida 32827, USA."
+"As cancer treatments have shifted toward targeted therapies, the role of 
+developmental signaling pathways in tumorigenesis has garnered special 
+attention. For example, the Hedgehog (Hh) pathway is required for cerebellar 
+development, and its constitutive activation can lead to pediatric 
+medulloblastomas. Hh signaling is normally initiated by the binding of Hh 
+ligands (Shh, Ihh, and Dhh) to the 12TM Patched1 (Ptch1) receptor resulting in 
+accumulation and activation of the G protein-coupled receptor-like protein 
+Smoothened (Smo) within the primary cilium. How Smo regulates Gli transcription 
+factor function remains unclear, but this process involve the scaffolding 
+protein Suppressor of Fused (Sufu), which can directly inhibit the Gli proteins 
+and facilitate their proteolytic processing into N-terminal repressors. Smo is 
+perhaps the most “druggable” target within the Hh pathway, and Smo inhibitors 
+have demonstrated efficacy in murine tumor models and human clinical trials. 
+However, certain cancers can proliferate in response to Gli activation through 
+noncanonical mechanisms and therefore are insensitive to Smo inhibitors. Tumors 
+that initially respond to Smo antagonists can also acquire mutations in Smo or 
+downstream pathway components that render them resistant to these 
+chemotherapies. Chemical inhibitors that act downstream of Smo therefore 
+constitute an important therapeutic strategy for the treatment of Hh 
+pathway-dependent cancers. Most current approaches are biased overwhelmingly to 
+find Smo antagonists or use non-physiological overexpressed Gli cell systems. We 
+overcame these limitations by employing a cell-based reporter that lacks Sufu 
+(Sufu-KO-LIGHT cells) and exhibits constitutive Hh target gene expression in 
+response to endogenous Gli activators to interrogate the MLSMR. We report here 
+for the first time on a novel potent (33.6 nM IC50), non-cytotoxic small 
+molecule antagonist of Gli function that does not inhibit Wnt3a signaling."
+PMID: 24049850
+"
+2. Cell Mol Bioeng. 2012 Dec;5(4):502-413. doi: 10.1007/s12195-012-0253-8."
+"Role of Epidermal Growth Factor-Triggered PI3K/Akt Signaling in the Migration of 
+Medulloblastoma-Derived Cells."
+"Dudu V(1), Able RA Jr, Rotari V, Kong Q, Vazquez M."
+"Author information:
+(1)Department of Biomedical Engineering, The City College of the City University 
+of New York (CCNY), 160 Convent Ave., Steinman Hall Room 403D, New York, NY 
+10031, USA."
+"Medulloblastoma (MB) is the most common brain cancer diagnosed among children. 
+The cellular pathways that regulate MB invasion in response to environmental 
+cues remain incompletely understood. Herein, we examine the migratory response 
+of human MB-derived Daoy cells to different concentration profiles of Epidermal 
+Growth Factor (EGF) using a microfluidic system. Our findings provide the first 
+quantitative evidence that EGF concentration gradients modulate the chemotaxis 
+of MB-derived cells in a dose-dependent manner via the EGF receptor (EGF-R). 
+Data illustrates that higher concentration gradients caused increased number of 
+cells to migrate. In addition, our results show that EGF-induced receptor 
+phosphorylation triggered the downstream activation of phosphoinositide-3 kinase 
+(PI3K)/Akt pathway, while its downstream activation was inhibited by Tarceva (an 
+EGF-R inhibitor), and Wortmannin (a PI3K inhibitor). The treatment with 
+inhibitors also severely reduced the number of MB-derived cells that migrated 
+towards increasing EGF concentration gradients. Our results provide evidence to 
+bolster the development of anti-migratory therapies as viable strategies to 
+impede EGF-stimulated MB dispersal."
+"DOI: 10.1007/s12195-012-0253-8
+PMCID: PMC3832994
+PMID: 24273611"
+"
+3. Memo. 2012 Sep;5(3):228-232. doi: 10.1007/s12254-012-0037-9. Epub 2012 Jul 20."
+Update on molecular and genetic alterations in adult medulloblastoma.
+"Kool M(1), Korshunov A, Pfister SM."
+"Author information:
+(1)Division of Pediatric Neurooncology, German Cancer Research Center DKFZ, Im 
+Neuenheimer Feld 580, 69120 Heidelberg, Germany."
+"Medulloblastoma encompasses a group of aggressively growing cancers that arise 
+either in the cerebellum or brain stem. They present primarily in children, with 
+80-85 % of medulloblastomas being diagnosed in patients of 16 years and younger. 
+In adults, medulloblastomas are rare and account for less than 1 % of 
+intracranial malignancies. Due to the low incidence of medulloblastoma in 
+adults, the biology and genetics of adult medulloblastomas have long been poorly 
+understood. Many centers therefore still treat adults either by radiotherapy 
+only or by using glioblastoma protocols (both often noncurative), or with 
+standard pediatric medulloblastoma regimes (often associated with dose-limiting 
+toxicity).Current clinical staging systems discriminate between standard-risk or 
+high-risk patients based on clinical and histological parameters. However, 
+clinico-pathological features often fail to accurately predict treatment 
+response. In children, molecularly defined risk assessment has become important 
+to improve survival of high-risk patients and to decrease treatment-related 
+toxicity and long-term sequelae in standard-risk patients. However, several 
+recent studies have shown that adult and pediatric medulloblastomas are 
+genetically distinct and may require different algorithms for molecular risk 
+stratification. Moreover, four subtypes of medulloblastoma have been identified 
+that appear at different frequencies in children and adults and that have a 
+different prognostic impact depending on age. Molecular markers such as 
+chromosome 10q and chromosome 17 statuses can be used for molecular risk 
+stratification of adult medulloblastoma, but only in a subgroup-specific 
+context. Here we present an overview of the current knowledge of the genomics of 
+adult medulloblastoma and how these tumors differ from their pediatric 
+counterparts."
+"DOI: 10.1007/s12254-012-0037-9
+PMCID: PMC3458193
+PMID: 23864912"
+"
+4. Cancer Biol Med. 2012 Jun;9(2):137-40. doi: 
+10.3969/j.issn.2095-3941.2012.02.011."
+Adult medulloblastoma associated with syringomyelia: a case report.
+Wang CC(1).
+"Author information:
+(1)Nepean Hospital, Kingswood NSW 2747, Australia."
+"The association between cerebellar medulloblastoma and syringomyelia is uncommon 
+and only found in pediatric patients. To date, adult medulloblastoma associated 
+with syringomyelia has not been reported in the literature. Paroxysmal 
+bradycardia is an uncommon clinical manifestation in posterior fossa tumors and 
+likely to be vagally mediated via brainstem preganglionic cardiac motor neurons. 
+This report introduces the diagnosis and treatment of a case of adult 
+medulloblastoma associated with syringomyelia, which presented with paroxysmal 
+bradycardia."
+"DOI: 10.3969/j.issn.2095-3941.2012.02.011
+PMCID: PMC3643653
+PMID: 23691470"
+"Conflict of interest statement: No potential conflicts of interest are 
+disclosed."
+"
+5. JIMD Rep. 2012;2:29-32. doi: 10.1007/8904_2011_39. Epub 2011 Sep 6."
+"Onset of adreno-leukodystrophy after medulloblastoma therapy: causal connection 
+or coincidence?"
+"Deib G(1), Poretti A, Meoded A, Cohen KJ, Raymond GV, Abromowitch M, Huisman TA."
+"Author information:
+(1)Division of Neuroradiology, Russell H. Morgan Department of Radiology and 
+Radiological Science, The Johns Hopkins University School of Medicine, 
+Baltimore, MD, USA."
+"X-linked adreno-leukodystrophy (ALD) is a peroxisomal disorder affecting the 
+white matter of the central nervous system and the adrenal cortex. It is caused 
+by mutations in the ABCD1 gene encoding for a peroxisomal membrane protein. The 
+absent genotype-phenotype correlation implies a contribution by environmental 
+factors to explain the phenotypical heterogeneity. We report on a 4-year-old boy 
+with a biochemically confirmed diagnosis of ALD after birth. At the age of 32 
+months, the additional diagnosis of a medulloblastoma was made. After treatment 
+of the medulloblastoma, he developed active areas of demyelination representing 
+the characteristic neuroimaging features of ALD. The clinical history of our 
+patient supports the hypothesis that external factors, like neurosurgical 
+intervention as part of medulloblastoma treatment, may accelerate or initiate 
+cerebral ALD-related demyelination. A postsurgical inflammatory reaction may 
+facilitate the inclusion of abnormal fatty acids in myelin. The opening of the 
+blood-brain barrier following neurosurgery may enhance the recognition of 
+previously sequestered antigens considered to play a role in ALD onset. 
+Consequently, neurosurgical disruption of the BBB can precipitate the 
+immune-mediated inflammatory process, which progressively destroys myelin in ALD 
+patients. Tumor-related chemotherapy and/or radiotherapy may also play a 
+contributing role. We suggest that X-ALD patients who undergo neurosurgical 
+intervention need close follow-up imaging to identify active demyelination 
+early."
+"DOI: 10.1007/8904_2011_39
+PMCID: PMC3509836
+PMID: 23430850"
+"
+6. Tumori. 2012 Nov;98(6):162e-4e. doi: 10.1700/1217.13513."
+Breast metastasis of anaplastic oligodendroglioma: a case report.
+"Alacacioglu A(1), Unal S, Canpolat S, Yurt A, Oztekin O, Coskun A, Karatas A, 
+Postaci H, Sop G."
+"Author information:
+(1)Division of Medical Oncology, Department of Internal Medicine, Bozyaka 
+Research and Training Hospital, Bozyaka, Izmir, Turkey. 
+dralacacioglu@hotmail.com"
+"Extracranial metastasis of primary brain tumors is rarely observed. Of all brain 
+malignancies, glioblastomas, medulloblastomas and astrocytomas metastasize most 
+frequently. Metastasis of oligondendroglioma is rare. We present a case of 
+breast metastasis in a 58-year-old man with an anaplastic oligodendroglioma."
+"DOI: 10.1700/1217.13513
+PMID: 23389376 [Indexed for MEDLINE]"
+"
+7. Zh Vopr Neirokhir Im N N Burdenko. 2012;76(6):66-72."
+[Comparative assessment of molecular abberation in medulloblastomas].
+[Article in Russian]
+"Ryzhova MV, Shishkina LV."
+"Medulloblastoma is a heterogeneous disease with molecular variants and distinct 
+biological behavior. Studying molecular abnormalities in medulloblastomas will 
+allow to stratify patients into key populations and optimize aduvant therapy 
+reducing long-term adverse effects."
+PMID: 23379186 [Indexed for MEDLINE]
+"
+8. Front Neurosci. 2013 Jan 24;6:198. doi: 10.3389/fnins.2012.00198. eCollection 
+2012."
+"Medulloblastoma or not? Crucial role in tumorigenesis of the timing of migration 
+of cerebellar granule precursor cells, regulated by Nos2 and Tis21."
+"Farioli-Vecchioli S(1), Micheli L, Leonardi L, Ceccarelli M, Cavallaro S, Tirone 
+F."
+"Author information:
+(1)Institute of Cell Biology and Neurobiology, National Research Council, 
+Fondazione Santa Lucia Rome, Italy."
+"DOI: 10.3389/fnins.2012.00198
+PMCID: PMC3553397
+PMID: 23355800"
+"
+9. Rev Med Chil. 2012 Sep;140(9):1116-25. doi: 10.4067/S0034-98872012000900003."
+"[Positron emission tomography with fluorine-deoxyglucose in sarcomas and 
+non-sarcoma non-epithelial tumors]."
+[Article in Spanish]
+"Massardo T(1), Jofré MJ, Sierralta MP, Canessa J, Castro G, Berrocal I, Gallegos 
+I."
+"Author information:
+(1)Sección Medicina Nuclear, Departamento de Medicina, Hospital Clínico 
+Universidad de Chile, Chile. tmassardo@redclinicauchile.cl"
+"BACKGROUND: The usefulness of positron emission tomography (PET) with 
+fluorine-deoxyglucose (FDG) in sarcomas and non-sarcoma non-epithelial (NSNE) 
+tumors is not clearly defined.
+AIM: To report a Chilean experience with NSNE tumors evaluated using PET with 
+FDG.
+MATERIAL AND METHODS: Retrospective review of the database of a PET laboratory. 
+Demographic data, indications and metabolic findings were compared with 
+conventional imaging in 88 adults and children with diverse bone and soft tissue 
+sarcomas as well as 24 gastrointestinal stromal tumors (GIST), 6 pleural 
+malignant mesotheliomas in adults, and 9 medulloblastomas in children.
+RESULTS: FDG showed good concordance with conventional imaging in NSNE tumors. 
+It was helpful for staging, restaging, follow-up after treatment and for the 
+detection of new not previously suspected lesions.
+CONCLUSIONS: PET with FDG could have a prognostic role and help in patient 
+management, mainly in musculoskeletal and high grade or less differentiated 
+sarcomas. In GIST, it was a good tool for immunotherapy control."
+"DOI: 10.4067/S0034-98872012000900003
+PMID: 23354632 [Indexed for MEDLINE]"
+"
+10. Oncology (Williston Park). 2012 Nov;26(11):1097, 1102."
+Medulloblastoma: molecular classifications and prognostic associations.
+"Shrieve DC(1), Colman H."
+"Author information:
+(1)Department of Radiation Oncology, The Huntsman Cancer Hospital, USA."
+"Comment on
+    Oncology (Williston Park). 2012 Nov;26(11):1083-91."
+PMID: 23330355 [Indexed for MEDLINE]
+"
+11. Oncology (Williston Park). 2012 Nov;26(11):1095-7."
+A tale of two tumors: pediatric and adult medulloblastoma.
+"Aizer AA(1), Chan AW."
+"Author information:
+(1)Dept of Radiation Oncology, Massachusetts General Hospital (MGH), Harvard 
+Medical School, Boston, Massachusetts, USA."
+"Comment on
+    Oncology (Williston Park). 2012 Nov;26(11):1083-91."
+PMID: 23330354 [Indexed for MEDLINE]
+"
+12. Oncology (Williston Park). 2012 Nov;26(11):1083-91."
+"Adult medulloblastoma, from spongioblastoma cerebelli to the present day: a 
+review of treatment and the integration of molecular markers."
+"Shonka N(1), Brandes A, De Groot JF."
+"Author information:
+(1)Division of Oncology and Hematology, University of Nebraska Medical Center, 
+Omaha, Nebraska 68198-7680, USA. nshonka@unmc.edu"
+"Comment in
+    Oncology (Williston Park). 2012 Nov;26(11):1095-7.
+    Oncology (Williston Park). 2012 Nov;26(11):1097, 1102."
+"Although they represent the most common malignant brain tumor in the pediatric 
+population, medulloblastomas are rare in adults, with an incidence of 0.5 per 
+million. With only one exception, all of the prospective clinical trials in this 
+disease have been done in the pediatric population, and therefore therapy for 
+adult medulloblastoma has been either extrapolated from the pediatric literature 
+or based on retrospective reviews. A growing body of literature underscores the 
+genetic similarities between adult and pediatric disease, which may allow 
+tailored therapy directed towards specific molecular pathways and may have an 
+impact on clinical outcomes. Here we present the history, staging system, and 
+treatment of medulloblastoma, reviewing the prognostic value and clinical 
+application of molecular subtyping while highlighting the differences between 
+adult and pediatric disease."
+PMID: 23330353 [Indexed for MEDLINE]
+"
+13. Zhonghua Bing Li Xue Za Zhi. 2012 Dec;41(12):823-7. doi: 
+10.3760/cma.j.issn.0529-5807.2012.12.007."
+"[Clinicopathologic significance of β-catenin protein and loss of heterozygosity 
+on 10q in medulloblastoma]."
+[Article in Chinese]
+"Li JZ(1), Wang CH, Zhou FA, Miao N, Abulajang G, Zhang W."
+"Author information:
+(1)Department of Pathology, the First Affiliated Hospital of Xinjiang Medical 
+University, Urumqi 830054, China."
+"OBJECTIVE: To study the expression of β-catenin protein and the status of loss 
+of heterozygosity (LOH) on chromsome 10q in medulloblastoma, with clinical 
+correlation.
+METHODS: Immunohistochemical study for β-catenin protein was carried out in 50 
+cases of medulloblastoma encountered in the First Affiliated Hospital of 
+Xinjiang Medical University during the period from 2002 to 2011, including 32 
+cases of classic medulloblastoma, 13 cases of desmoplastic medulloblastoma and 5 
+cases of medulloblastoma with extensive nodularity. The status of LOH on 10q was 
+also detected by fluorescence in-situ hybridization. The clinicopathologic 
+characteristics and prognostic parameters were studied by Kaplan-Meien and Cox 
+analysis.
+RESULTS: The rates of expression of β-catenin protein in classic 
+medulloblastoma, desmoplastic medulloblastoma and medulloblastoma with extensive 
+nodularity were 53.1% (17/32), 4/13 and 1/5, respectively. The rate of LOH on 
+10q was 33.3% (8/24) in classic medulloblastoma and 2/11 in desmoplastic 
+medulloblastoma. There was no statistically significant difference between the 
+two tumor types. Univariate analysis showed that the expression of β-catenin 
+protein (P = 0.022), lack of LOH on 10q (P = 0.020), extensiveness of tumor 
+resection (P < 0.01), radiotherapy (P = 0.002) and chemotherapy (P < 0.01) 
+represented important prognostic factors.
+CONCLUSIONS: Medulloblastoma with expression of β-catenin protein and without 
+LOH on 10q carries a better prognosis. Assessment of these parameters is helpful 
+in evaluating prognosis and subsequent patient management."
+"DOI: 10.3760/cma.j.issn.0529-5807.2012.12.007
+PMID: 23324231 [Indexed for MEDLINE]"
+"
+14. Transl Oncol. 2012 Dec;5(6):408-14. doi: 10.1593/tlo.12277. Epub 2012 Dec 1."
+"Microscopic Delineation of Medulloblastoma Margins in a Transgenic Mouse Model 
+Using a Topically Applied VEGFR-1 Probe."
+"Wang D(1), Chen Y, Leigh SY, Haeberle H, Contag CH, Liu JT."
+"Author information:
+(1)Department of Biomedical Engineering, State University of New York (SUNY) at 
+Stony Brook, Stony Brook, NY."
+"The unambiguous demarcation of tumor margins is critical at the final stages in 
+the surgical treatment of brain tumors because patient outcomes have been shown 
+to correlate with the extent of resection. Real-time high-resolution imaging 
+with the aid of a tumor-targeting fluorescent contrast agent has the potential 
+to enable intraoperative differentiation of tumor versus normal tissues with 
+accuracy approaching the current gold standard of histopathology. In this study, 
+a monoclonal antibody targeting the vascular endothelial growth factor receptor 
+1 (VEGFR-1) was conjugated to fluorophores and evaluated as a tumor contrast 
+agent in a transgenic mouse model of medulloblastoma. The probe was administered 
+topically, and its efficacy as an imaging agent was evaluated in vitro using 
+flow cytometry, as well as ex vivo on fixed and fresh tissues through 
+immunohistochemistry and dual-axis confocal microscopy, respectively. Results 
+show a preferential binding to tumor versus normal tissue, suggesting that a 
+topically applied VEGFR-1 probe can potentially be used with real-time 
+intraoperative optical sectioning microscopy to guide brain tumor resections."
+"DOI: 10.1593/tlo.12277
+PMCID: PMC3542836
+PMID: 23323155"
+"
+15. Folia Neuropathol. 2012;50(4):375-81. doi: 10.5114/fn.2012.32367."
+"Toll-like receptors as an innate immunity bridge to neuroinflammation in 
+medulloblastoma."
+"Maslinska D(1), Laure-Kamionowska M, Maślinska S."
+"Author information:
+(1)Department of Experimental and Clinical Neuropathology, Mossakowski Medical 
+Research Centre, Polish Academy of Sciences, Warsaw, Poland. 
+maslinskad@imdik.pan.pl"
+"The relationship between inflammation, immunity and cancer is widely accepted 
+but mechanisms mediating this relationship remain unknown. Our present study was 
+undertaken to examine the presence and distribution of Toll-like receptors 
+(TLRs) in necrotic areas of medulloblastoma. These receptors fulfil the criteria 
+postulated for the receptors of innate immunity and signalling from TLRs induces 
+synthesis of various pro-inflammatory cytokines, enzymes and mediators. The 
+study was performed on human medulloblastoma samples containing areas of 
+necrosis within the tumour and/or within the normal nerve tissue at the 
+periphery of the tumour. Proteins of four TLRs: TLR 2, 3, 4 and 9 were detected 
+in the tissue with the immunohistochemical method using the specific antibodies. 
+Two types of necrotic areas were found. In the first type, the area of dead 
+cells was surrounded by undifferentiated medulloblastoma cells. A lot of these 
+cells expressed TLR 2 and TLR 3 antigens. TLR 2 was also expressed on the wall 
+of de novo formed blood vessels that fill tumour regions already cleared from 
+dead cells. The second type of necrotic areas were found at the periphery of the 
+tumour and composed of normal nerve tissue cells. TLR 2, TLR 3 and TLR 9 were 
+detected in hypertrophic glia cells. Our findings show a new function of TLRs as 
+sensors of pathogens released by medulloblastoma dead cells. This new function 
+may provide a key link connecting innate immunity, neuroinflammation and 
+angiogenesis in the tumour."
+"DOI: 10.5114/fn.2012.32367
+PMID: 23319193 [Indexed for MEDLINE]"
+"
+16. Front Oncol. 2012 Dec 11;2:185. doi: 10.3389/fonc.2012.00185. eCollection
+2012."
+"Radiation therapy quality in CCG/POG intergroup 9961: implications for 
+craniospinal irradiation and the posterior fossa boost in future medulloblastoma 
+trials."
+"Donahue B(1), Marymont MA, Kessel S, Iandoli MK, Fitzgerald T, Holmes E, Kocak 
+M, Boyett JM, Gajjar A, Packer RJ."
+"Author information:
+(1)New York University School of Medicine New York, NY, USA."
+"PURPOSE: Associations of radiation therapy (RT) deviations and outcomes in 
+medulloblastoma have not been defined well, particularly in the era of 
+reduced-dose craniospinal irradiation and chemotherapy. The aim of this study is 
+to evaluate the quality of RT on Children's Cancer Group/Pediatric Oncology 
+Group 9961 and analyze associations of RT deviations with outcome.
+MATERIALS AND METHODS: Major volume deviations were assessed based on the 
+distance from specified anatomical region to field edge. We investigated 
+associations of RT deviations with progression-free survival (PFS), overall 
+survival (OS), and explored associations with demographics and clinical 
+variables.
+RESULTS: Of the 308 patients who were evaluable for volume deviations, 101 
+patients (33%) did not have any. Of the remaining 207 patients, 50% had only 
+minor deviations, 29% had only major deviations, and 21% had both minor and 
+major deviations. Of the patients with major deviations, 73% had a single major 
+deviation. The most common major deviation was in the cribriform plate region, 
+followed by the posterior fossa (PF); PF deviations resulted from treating less 
+than whole PF. There were no significant differences in PFS or OS between 
+patients with deviations and those without. There was no evidence of 
+associations of deviations with patient age.
+CONCLUSIONS: Approximately one-third of patients had major volume deviations. 
+There was no evidence of a significant association between these and outcome. 
+This lack of correlation likely reflects the current high quality of RT 
+delivered in Children's Oncology Group institutions, our strict definition of 
+volume deviations, and the relatively few instances of multiple major deviations 
+in individual patients. In is noteworthy that the types of PF volume deviations 
+observed in this study were not adversely associated with outcome. As we move 
+forward, quality assurance will continue to play an important role to ensure 
+that deviations on study do not influence study outcome."
+"DOI: 10.3389/fonc.2012.00185
+PMCID: PMC3540930
+PMID: 23316474"
+"
+17. Med Image Comput Comput Assist Interv. 2012;15(Pt 1):157-64. doi: 
+10.1007/978-3-642-33415-3_20."
+"A visual latent semantic approach for automatic analysis and interpretation of 
+anaplastic medulloblastoma virtual slides."
+"Cruz-Roa A(1), González F, Galaro J, Judkins AR, Ellison D, Baccon J, Madabhushi 
+A, Romero E."
+"Author information:
+(1)BioIngenium Research Group, Universidad Nacional de Colombia, Bogota, 
+Colombia."
+"A method for automatic analysis and interpretation of histopathology images is 
+presented. The method uses a representation of the image data set based on bag 
+of features histograms built from visual dictionary of Haar-based patches and a 
+novel visual latent semantic strategy for characterizing the visual content of a 
+set of images. One important contribution of the method is the provision of an 
+interpretability layer, which is able to explain a particular classification by 
+visually mapping the most important visual patterns associated with such 
+classification. The method was evaluated on a challenging problem involving 
+automated discrimination of medulloblastoma tumors based on image derived 
+attributes from whole slide images as anaplastic or non-anaplastic. The data set 
+comprised 10 labeled histopathological patient studies, 5 for anaplastic and 5 
+for non-anaplastic, where 750 square images cropped randomly from cancerous 
+region from whole slide per study. The experimental results show that the new 
+method is competitive in terms of classification accuracy achieving 0.87 in 
+average."
+"DOI: 10.1007/978-3-642-33415-3_20
+PMID: 23285547 [Indexed for MEDLINE]"
+"
+18. Pediatr Blood Cancer. 2013 Apr;60(4):642-9. doi: 10.1002/pbc.24409. Epub 2012
+ Dec 31."
+"Malnutrition in pediatric patients with cancer at diagnosis and throughout 
+therapy: A multicenter cohort study."
+"Zimmermann K(1), Ammann RA, Kuehni CE, De Geest S, Cignacco E."
+"Author information:
+(1)Institute of Nursing Science, University of Basel, Basel, Switzerland."
+"BACKGROUND: Malnutrition is a common problem in pediatric patients with cancer. 
+Reported prevalence varies widely and has often been assessed only in a subset 
+of childhood types of cancer. This study aimed to describe the prevalence of 
+malnutrition among pediatric patients newly diagnosed with cancer, to describe 
+the occurrence and course of malnutrition during therapy and to identify factors 
+associated with malnutrition during therapy.
+PROCEDURE: In a retrospective cohort study of 327 patients diagnosed from 2003 
+to 2006 in three Swiss tertiary care hospitals, weight and height measures 
+together with patient-, disease-, and treatment-related characteristics were 
+assessed. Malnutrition was defined as body mass index (BMI) below -2 standard 
+deviation scores (SDS) or a weight loss >10% from diagnosis. Malnutrition was 
+assessed at diagnosis and continuously during anticancer therapy.
+RESULTS: At diagnosis, 5.8% of the patients (19) were malnourished based on BMI. 
+During anticancer therapy, the cumulative incidence of malnutrition rose to 22% 
+(70 patients) after 30 days, to 36% (116 patients) after 60 days, and finally to 
+47% (155 patients). In these 155 patients, the median duration of malnutrition 
+was 60 days (interquartile range, 21-122). Age above 10 years at diagnosis, BMI 
+≤ -1.0 SDS at diagnosis, and a diagnosis of medulloblastoma were positively 
+associated with a higher proportion of malnutrition time during therapy.
+CONCLUSIONS: The rapid increase of malnutrition after the start of treatment 
+underlines the need to develop evidence-based and efficient methods to provide 
+nutritional support for children with cancer."
+"Copyright © 2012 Wiley Periodicals, Inc."
+"DOI: 10.1002/pbc.24409
+PMID: 23281136 [Indexed for MEDLINE]"
+"
+19. Eur J Paediatr Neurol. 2013 May;17(3):302-7. doi: 10.1016/j.ejpn.2012.12.002.
+ Epub 2012 Dec 27."
+"Differentiation between high and low grade tumours in paediatric patients by 
+using apparent diffusion coefficients."
+"Porto L(1), Jurcoane A, Schwabe D, Kieslich M, Hattingen E."
+"Author information:
+(1)Neuroradiology Department of the Johann Wolfgang Goethe University, 
+Frankfurt/Main, Germany. luciana.porto@kgu.de"
+"OBJECTIVE: This study was performed to confirm the hypothesis that pre-operative 
+apparent diffusion coefficient (ADC) can be used to distinguish between ""low 
+grade"" and ""high grade"" tumours in paediatric patients.
+MATERIAL AND METHODS: ADC values were retrospectively evaluated in thirty-six 
+paediatric brain tumours. Twenty-one children with low grade brain tumours (12 
+WHO I astrocytomas, 1 giant cell tumour, 1 pilomyxoid astrocytoma, 4 WHO II 
+astrocytomas, 2 craniopharyngiomas and 1 ganglioglioma) and 15 children with 
+high grade brain tumours (6 medulloblastomas, 3 WHO III ependymomas, 1 PNET, 1 
+malignant rhabdoid tumour, 1 malignant germ cell tumour, 1 WHO III astrocytoma, 
+1 WHO IV astrocytoma, 1 rhabdomyosarcoma metastasis) were included in this 
+study. Minimum and mean ADC values were compared between low grade and high 
+grade tumours and cut-off values were evaluated.
+RESULTS: The cut-off values to differentiate low and high grade paediatric brain 
+tumours were 0.7 × 10(-3) mm(2)/s and 1.0 × 10(-3) mm(2)/s for minimum ADC and 
+average ADC values respectively. All but one high grade infratentorial 
+ependymoma showed significantly lower ADC values than low grade brain tumours in 
+children.
+CONCLUSION: Combining the information obtained from conventional MR imaging with 
+the ADC values may increase the accuracy of pre-operative differentiation 
+between low grade and high grade paediatric tumours. Cut-off values can help to 
+discern low from high grade tumours. However, it has to be considered that there 
+is a substantial overlap between tumour types previously described in the 
+literature."
+"Copyright © 2012 European Paediatric Neurology Society. Published by Elsevier 
+Ltd. All rights reserved."
+"DOI: 10.1016/j.ejpn.2012.12.002
+PMID: 23273960 [Indexed for MEDLINE]"
+"
+20. Pediatr Hematol Oncol. 2013 Feb;30(1):28-9. doi:
+10.3109/08880018.2012.748856.  Epub 2012 Dec 28."
+"Chronic myeloid leukemia as a second malignant neoplasm in a patient with 
+medulloblastoma after treatment with chemotherapy and irradiation: a case report 
+and review of the literature."
+"Dhir N(1), Zaky W, Zomorodian T, Dhall G."
+"Author information:
+(1)Neuro-oncology Program, Children's Hospital Los Angeles, Los Angeles, 
+California, USA."
+"DOI: 10.3109/08880018.2012.748856
+PMID: 23273112 [Indexed for MEDLINE]"
