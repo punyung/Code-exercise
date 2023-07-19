@@ -1,7 +1,7 @@
 ---
 title: "data analysis"
 author: "punyung"
-date: "2023-06-21"
+date: "2023-07"
 output: html_document
 ---
 
@@ -9,13 +9,378 @@ output: html_document
 knitr::opts_chunk$set(echo = TRUE)
 ```
 
-
 ## Mutation data analysis
+
 Loading mutation data
 ```{r}
-data_mut <- readRDS("data/expr_sclc_ucologne_2015.rds")
+options (warn = -1)
+data_mut <- readRDS("data/mutations_sclc_ucologne_2015.rds")
 ```
-1.Identify top 10 most frequently mutated gene. Identify samples whose mutation count is in the 80 to 90 percentile.
-```{r}
 
+1.Identify top 10 most frequently mutated gene. Identify samples whose mutation count is in the 80 to 90 percentile.
+
+```{r}
+# Add a column for ID
+data_mut$ID <- paste(data_mut$chrom,data_mut$start_pos,data_mut$end_pos,sep=":")
+data_mut_sub <- data_mut[,c(17,1)]
+dim(data_mut_sub)
+data_mut_uni <- data_mut_sub[!duplicated(data_mut_sub),] # Remove duplicate variants
+gene_mut_freq <- as.data.frame(table(data_mut_uni$gene))
+gene_mut_freq_sort <- gene_mut_freq[order(gene_mut_freq$Freq,decreasing=T),]
+gene_top10 <- gene_mut_freq_sort[1:10,] # 10 most frequently mutated genes
+# Identify samples whose mutation count is in 80 to 90 percentile
+sample_mut <- data_mut[,c(17,11)]
+sample_mut_uni <- sample_mut[!duplicated(sample_mut),]
+sample_mut_freq <- as.data.frame(table(sample_mut_uni$sample_id))
+quantile(sample_mut_freq$Freq,c(0.8,0.9))
+```
+
+2.Categorize variants based on their expected effects using the data/mutation_effects.tsv table.
+
+```{r}
+library(dplyr)
+VarEffect <- read.table("data/mutation_effects.tsv",header = T)
+data_var <- data_mut[,c("gene","variant_class")]
+data_var_eff <- left_join(data_var,VarEffect,by="variant_class")
+head(data_var_eff)
+data_var_eff <- data_var_eff[data_var_eff$effect %in% c("neutral","loss_of_function"),] # retaining the effect is either "neutral" or "loss-of-function
+head(data_var_eff)
+```
+
+3.Implement a statistical test that determines whether a gene has a significantly higher proportion of loss-of-function mutations (excluding mutations with uncertain effects), compared to other genes.
+
+```{r}
+# calculate the observed counts of loss-of-function and other mutation
+counts_var <- table(data_var_eff$gene,data_var_eff$effect)
+head(counts_var)
+
+# Perform the chi-square test for each gene
+gene_results_pval <- apply(counts_var,1,function(row){
+  chisq.test(row)$p.value
+})
+
+gene_results <- apply(counts_var,1,function(row){
+  chisq.test(row)
+})
+
+# value for multiple testing, using method fdr 
+adjusted_pvalues <- p.adjust(gene_results_pval,method = "fdr")
+head(adjusted_pvalues)
+```
+
+4.Identify candidate tumour suppressor genes using this statistical test, adjusting for multiple hypothesis testing.
+
+```{r}
+# calculate the effect size of genes
+relative_risks <- numeric(length=nrow(counts_var))
+for(i in 1:nrow(counts_var)){
+  gene <- rownames(counts_var)[i]
+  loss_of_function_count <- counts_var[i,1]
+  neutral_count <- counts_var[i,2]
+  
+  # calculate relative risks
+  Risk1 <- loss_of_function_count / (loss_of_function_count+neutral_count)
+  Risk2 <- sum(counts_var[,"loss_of_function"]) / sum(counts_var[,"loss_of_function"] + counts_var[,"neutral"])
+  relative_risks[i] <- Risk1/Risk2
+}
+
+result_df <- data.frame(gene_symbol = names(gene_results),
+                        effect_size = relative_risks,
+                        p_value = gene_results_pval,
+                        q_value = adjusted_pvalues)
+# Set a significant threshold
+gene_tumoursupress <- result_df[result_df$q_value<0.05,]
+head(gene_tumoursupress)
+
+```
+
+5.Gene function Description
+
+-   *IGFN1:* IGFN1 is a eukaryotic translation elongation factor 1A (eEF1A) binding protein and expressed in many ocular tissues such as RPE, retinal foveal and macula, and lens. Frequent IGFN1 mutation is detected in metastatic breast cancer, the disease which leads to the poor prognosis of patients.IGFN1 is not prognostic in lung cancer. [1]-[3]
+
+-   *RB1:* The RB1 protein, regulates the cell cycle by inhibiting cell division and promoting cell cycle arrest. Mutations in the RB1 gene can lead to loss of pRB function, resulting in uncontrolled cell proliferation and an increased risk of developing cancer. The loss of RB1 can efficiently transform neuroendocrine and SPC-expressing cells leading to small cell lung cancer(SCLC), albeit SPC-expressing cells at a lesser efficiency.[4]-[7]
+
+-   *TP53:* TP53 plays a critical role in preventing cancer development by regulating cell growth, DNA repair, and programmed cell death (apoptosis). Mutations in TP53 are found in a wide range of cancers and are associated with the loss of its tumor suppressor function, resulting in uncontrolled cell growth and increased susceptibility to cancer development. In the context of SCLC, the inactivation of TP53 is considered a critical and initiating molecular event. This inactivation primarily affects normal neuroendocrine (NE) cells expressing ASCL1, which are predominantly located in larger airways. In some instances, the inactivation events may also involve derivatives of other multipotent cells.[7]-[10]
+
+-   Reference:
+-   [1]Wen, Xiaofeng et al. “Association of IGFN1 variant with polypoidal choroidal vasculopathy.” The journal of gene medicine vol. 20,2-3 (2018): e3007. doi:10.1002/jgm.3007
+-   [2]Lefebvre, Celine et al. “Mutational Profile of Metastatic Breast Cancers: A Retrospective Analysis.” PLoS medicine vol. 13,12 e1002201. 27 Dec. 2016, doi:10.1371/journal.pmed.1002201
+-   [3]Sjöstedt, Evelina et al. “An atlas of the protein-coding genes in the human, pig, and mouse brain.” Science (New York, N.Y.) vol. 367,6482 (2020): eaay5947. doi:10.1126/science.aay5947
+-   [4]Sutherland, Kate D et al. “Cell of origin of small cell lung cancer: inactivation of Trp53 and Rb1 in distinct cell types of adult mouse lung.” Cancer cell vol. 19,6 (2011): 754-64. doi:10.1016/j.ccr.2011.04.019
+-   [5]Fiorentino FP, Tokgün E, Solé-Sánchez S, et al. Growth suppression by MYC inhibition in small cell lung cancer cells with TP53 and RB1 inactivation. Oncotarget. 2016;7(21):31014-31028. doi:10.18632/oncotarget.8826
+-   [6]Knudsen, Erik S et al. “Cell Cycle and Beyond: Exploiting New RB1 Controlled Mechanisms for Cancer Therapy.” Trends in cancer vol. 5,5 (2019): 308-324. doi:10.1016/j.trecan.2019.03.005
+-   [7]Gazdar, Adi F et al. “Small-cell lung cancer: what we know, what we need to know and the path forward.” Nature reviews. Cancer vol. 17,12 (2017): 725-737. doi:10.1038/nrc.2017.87
+-   [8]Offin, Michael et al. “Concurrent RB1 and TP53 Alterations Define a Subset of EGFR-Mutant Lung Cancers at risk for Histologic Transformation and Inferior Clinical Outcomes.” Journal of thoracic oncology : official publication of the International Association for the Study of Lung Cancer vol. 14,10 (2019): 1784-1793. doi:10.1016/j.jtho.2019.06.002
+-   [9]Bebber, Christina M et al. “Ferroptosis response segregates small cell lung cancer (SCLC) neuroendocrine subtypes.” Nature communications vol. 12,1 2048. 6 Apr. 2021, doi:10.1038/s41467-021-22336-4
+-   [10]Wang, Zilu et al. “Should mutant TP53 be targeted for cancer therapy?.” Cell death and differentiation vol. 29,5 (2022): 911-920. doi:10.1038/s41418-022-00962-9
+
+## Transcriptomic data normalization
+
+Loading transcriptomic data
+
+```{r}
+rm(list=ls())
+data_trans <- readRDS("data/expr_sclc_ucologne_2015.rds")
+```
+
+1.Perform an appropriate log transformation on the data.
+
+```{r}
+data_trans_log <- log(data_trans+1)
+#head(data_trans_log)
+dim(data_trans_log)
+```
+
+2.Implement a median polish algorithm from scartch.
+
+```{r}
+# initial value 
+rowmedian <- 0.1
+colmedian <- 0.1
+i <- 0　# iteration
+data_trans_mp <- data_trans_log
+#all(rowmedian==0)==FALSE 
+while(i < 11){
+# find the row medians for each row
+rowmedian <- apply(data_trans_mp,1,median)
+# subtract that median number from all the elements of each row 
+data_trans_mp <- data_trans_mp - rowmedian
+# identify the median of the column
+colmedian <- apply(data_trans_mp,2,median)
+# subtract the column median from all the elements
+data_trans_mp <- data_trans_mp - colmedian
+# repeat this progress until we coverge to have medians of zero across the rows and columns
+i <- i+1 # calculate the number of interations 
+}
+
+```
+
+3.Compare the residuals of algorithm and stats::medpolish <br>
+I try to use density plots and histograms to compare the distribution of the residuals between algorithm and stats::medpolish. It's found that the distribution processed by the medpolish algorithm is unimodal. It shows that the expression levels of most genes are concentrated in a specific level range after normalization.
+```{r}
+data_trans_mp_re1 <- data_trans_log - data_trans_mp # residuals from my own algorithm
+data_trans_mp_re2 <- stats::medpolish(data_trans_log)$residuals # residuals from medpolish function
+# Use Kernel density estimation to visualize the distribution of residuals
+a1 <- plot(density(data_trans_mp_re1),main="Density plot of my own algorithm")
+a2 <- hist(data_trans_mp_re1,freq=F,main= "Histograms of my own algorithm")
+b1 <- plot(density(data_trans_mp_re2),main="Density plot of medpolish function")
+b2 <- hist(data_trans_mp_re2,freq=F,main="Histograms of medpolish function")
+```
+
+4.Plot heatmaps of the results before and after median polish
+
+```{r}
+library(pheatmap)
+library(ggplotify)
+p1 <- pheatmap(data_trans_log, 
+                 cluster_rows = T,
+                 cluster_cols = T,
+                 show_rownames = F,
+                 show_colnames = F,
+                 scale = "none", 
+                 
+                 color =colorRampPalette(c("navy", "white","firebrick3"))(100),
+                 main = "Data before normalization")
+p1 <- as.ggplot(p1)
+p2 <- pheatmap(data_trans_mp_re2, 
+                 cluster_rows = T,
+                 cluster_cols = T,
+                 show_rownames = F,
+                 show_colnames = F,
+                 scale = "none", 
+                 color =colorRampPalette(c("navy", "white","firebrick3"))(100),
+                 main = "Data after normalization")
+p2 <- as.ggplot(p2)
+library(cowplot)
+plot_grid(p1,p2,labels=c("A","B"),nrow=1,ncol=2) # Stitch two images together
+```
+
+5.Output the median polished residual matrix as the normalized transcriptomic data
+
+```{r}
+write.table(data_trans_mp_re2,file="normalized transcriptomic data",sep="",row.names=T,col.names=T)
+```
+
+## Differential gene expression analysis
+
+Data preprocessing
+
+```{r}
+library(readr)
+data_clinical <- read_tsv("data/pheno_sclc_ucologne_2015.tsv")
+```
+
+1.Define two groups of tumours: early stage (I-II) vs advanced stage (III-IV)
+
+```{r}
+group_early <- data_clinical[which(data_clinical$uicc_tumor_stage=="I" | data_clinical$uicc_tumor_stage=="II"),]
+group_advanced <- data_clinical[which(data_clinical$uicc_tumor_stage=="III" | data_clinical$uicc_tumor_stage=="IV"),]
+group <- rbind(group_early,group_advanced)
+#group$patient_id
+# Filtering out samples in the clinical data that cannot be matched with the gene expression matrix
+col <- colnames(data_trans) # sample name of expression dataset
+match_re <- na.omit(match(group$patient_id,col)) # Remove samples not included in gene expression data
+count_DE <- data_trans[,match_re] # matrix for differential gene expression analysis
+group_sub <- group[match(colnames(count_DE),group$patient_id),] 
+group_DE <- c(rep("early",2),rep("advanced",9)) # Rename the group
+```
+
+2.Identify differentially expressed genes Perform differential gene expression analysis using the edgeR package.
+
+```{r}
+library(edgeR)
+y <- DGEList(counts=count_DE,group = group_DE) # create a DGEList object
+y <- calcNormFactors(y, method="TMM") # compute relative scaling factors for libraries
+design <- model.matrix(~as.factor(group_DE)) # create design matrix with intercept
+y <- estimateDisp(y, design) # Estimate dispersion
+fit <- glmFit(y, design) # Fit genewise negatvie binomial models
+lrt <- glmLRT(fit, coef=2)
+de_res <- topTags(lrt, n=nrow(count_DE))$table # return top 10 differential expressed gene
+de_called_fdr <- rownames(de_res)[de_res$FDR < 0.01] # cutoff=1%
+cat("The differential genes are as follows:",de_called_fdr)
+# use smearplot to display DE results
+plotSmear(lrt,de.tags = de_called_fdr,cex=0.4)
+```
+
+## Integrative analysis
+
+1.Loading the structural variant data.
+```{r}
+library(readr)
+data_sv <- read_tsv("data/sv_sclc_ucologne_2015.tsv")
+dim(data_sv)
+# identify the samples that harbours the sv
+```
+
+2.Determine the expression level of the gene in the sample that harbours the SV.
+Among them, we found that some genes influenced by structural variants do not have expression data.
+```{r}
+sample_sv <- as.character(data_sv$sample_id) # 50 samples in total
+length(sample_sv)
+sample_sv <- unique(sample_sv)
+data_expr_sv <- data_trans[,sample_sv] # expression data only contain structural variant sample
+dim(data_expr_sv)
+head(colnames(data_expr_sv))
+# subtract the sample_id, site1_hugo_symbol, site2_hugo_symbol from the sturctural variant data
+data_sv_sub <- data_sv[,c("sample_id","site1_hugo_symbol","site2_hugo_symbol")]
+# Create a function to capture the expression of a gene
+#' @param data_sv_sub structural variant data
+#' @param sample_sv sampleID that harbours the SV, e.g. sample_sv[1]
+#' @param data_expr_sv expression data
+genexprs_sv <- function(data_sv_sub,sample_sv,data_expr_sv){
+  data_sv_sub1 <- data_sv_sub[data_sv_sub$sample_id==sample_sv,] 
+#data_sv_sub2 <- data_sv_sub[data_sv_sub$sample_id==sample_sv[2],] 
+# filter the sv gene without expression in the transcriptomic data 
+sub1_gene_site1_index <- match(as.character(data_sv_sub1$site1_hugo_symbol),rownames(data_expr_sv)) 
+sub1_gene_site2_index <- match(data_sv_sub1$site2_hugo_symbol,rownames(data_expr_sv))
+sub1_rm_gene <- c(which(is.na(sub1_gene_site1_index)),which(is.na(sub1_gene_site2_index)))
+sub1_gene_site1_index <- sub1_gene_site1_index[-sub1_rm_gene]
+sub1_gene_site2_index <- sub1_gene_site2_index[-sub1_rm_gene]
+data_sv_sub1 <- data_sv_sub1[-sub1_rm_gene,] # filter the structural variant data
+site1_count <- data_expr_sv[sub1_gene_site1_index,sample_sv] # gene expression of site1_hugo_symbol
+site2_count <- data_expr_sv[sub1_gene_site2_index,sample_sv] # gene expression of site2_hugo_symbol
+exprs_sv <- data.frame(data_sv_sub1,site1_count=site1_count,site2_count=site2_count,row.names = NULL)
+return(list(exprs_sv=exprs_sv,site1_index=sub1_gene_site1_index,site2_index=sub1_gene_site2_index)) 
+}
+exprs_sv1 <- genexprs_sv(data_sv_sub,sample_sv[1],data_expr_sv)$exprs_sv # return the gene expression of samples with SV
+head(exprs_sv1)
+# For sample: "sclc_ucologne_2015_S02353"
+exprs_sv2 <- genexprs_sv(data_sv_sub,sample_sv[2],data_expr_sv)$exprs_sv
+```
+3.Identify SVs that satisfy the following critiera:
+  (1)The involved pair of genes both have elevated expression levels in samples with the SV compared to samples without the SV.
+  (2)The second gene in the pair is in frame.
+```{r}
+# identify the sample without SVs
+sample_unsv <- setdiff(colnames(data_trans),sample_sv) # 79 samples without SV
+# For "sclc_ucologne_2015_S02297" sample
+# step1: gene expression data contain sample without SV
+data_trans_unsv <- data_trans[,sample_unsv]
+dim(data_trans_unsv)
+# step2: select the second gene in the pair is in frame
+data_sv_sub1 <- data_sv[which(data_sv$site2_effect_on_frame=="in-frame" & data_sv$sample_id==sample_sv[1]),]
+# step3: extract the  gene expression from sample without SV
+#   Filter out genes that do not exist in the gene expression data
+tmp1 <- match(data_sv_sub1$site1_hugo_symbol,rownames(data_trans_unsv))
+tmp2 <- match(data_sv_sub1$site2_hugo_symbol,rownames(data_trans_unsv))
+rm_gene <- c(which(is.na(tmp1)),which(is.na(tmp2)))
+if(is.null(rm_gene)==T){
+  tmp1 <- tmp1[-rm_gene] # the location of site1 gene in gene expression data 
+  tmp2 <- tmp2[-rm_gene]# the location of site2 gene in gene expression data 
+}
+# step4: extract site1 and site2 gene expression from data_trans_unsv
+data_trans_unsv_site1 <- data_trans_unsv[tmp1,]
+dim(data_trans_unsv_site1)
+data_trans_unsv_site2 <- data_trans_unsv[tmp2,]
+# step5: filter out gene in exprs_sv1 that meet the second critiera
+exprs_sv1_f <- exprs_sv1[exprs_sv1$site2_hugo_symbol %in% rownames(data_trans_unsv_site2),] # 
+head(exprs_sv1_f) # gene expression data with SV 
+# For the convenience of calculation, the expression matrix is divided into site1 and site2
+exprs_sv1_f_site1 <- exprs_sv1_f[,c("sample_id","site1_hugo_symbol","site1_count")]
+exprs_sv1_f_site2 <- exprs_sv1_f[,c("sample_id","site2_hugo_symbol","site2_count")]
+# step6: compare the gene expression, we have the following variables to compare
+# data_trans_unsv_site1: site1 gene expression for sample without SV
+# data_trans_unsv_site2: site2 gene expression for sample without SV
+# exprs_sv1_f_site1: site1 gene expression for sample with SV
+# exprs_sv1_f_site2: site2 gene expression for sample with SV
+# 6.1 calculate the mean gene expression of sample without SV
+rowmeans_unsv_site1 <- rowMeans(data_trans_unsv_site1)
+rowmeans_unsv_site2 <- rowMeans(data_trans_unsv_site2)
+# 6.2 compare the gene expression of site1 and site2 individually
+which(exprs_sv1_f_site1$site1_count > rowmeans_unsv_site1)
+which(exprs_sv1_f_site2$site2_count > rowmeans_unsv_site2)
+# 6.3 return the result
+```
+
+Transform the code into a function
+```{r}
+# identify the sample without SVs
+sample_unsv <- setdiff(colnames(data_trans),sample_sv) # 79 samples without SV
+#' @param data_sv structural variant data
+#' @param sample_sv sampleID that harbours the SV, e.g. sample_sv[1]
+#' @param data_trans transcriptomic data 
+#' @param exprs_sv1 expression data with SV
+SVs_selection <- function(data_sv,sample_sv,sample_unsv,data_trans,exprs_sv1){
+  # step1: gene expression data contain sample without SV
+data_trans_unsv <- data_trans[,sample_unsv]
+dim(data_trans_unsv)
+# step2: select the second gene in the pair is in frame
+data_sv_sub1 <- data_sv[which(data_sv$site2_effect_on_frame=="in-frame" & data_sv$sample_id==sample_sv),]
+# step3: extract the  gene expression from sample without SV
+#   Filter out genes that do not exist in the gene expression data
+tmp1 <- match(data_sv_sub1$site1_hugo_symbol,rownames(data_trans_unsv))
+tmp2 <- match(data_sv_sub1$site2_hugo_symbol,rownames(data_trans_unsv))
+rm_gene <- c(which(is.na(tmp1)),which(is.na(tmp2)))
+if(is.null(rm_gene)==T){
+  tmp1 <- tmp1[-rm_gene] # the location of site1 gene in gene expression data 
+  tmp2 <- tmp2[-rm_gene]# the location of site2 gene in gene expression data 
+}
+# step4: extract site1 and site2 gene expression from data_trans_unsv
+data_trans_unsv_site1 <- data_trans_unsv[tmp1,]
+dim(data_trans_unsv_site1)
+data_trans_unsv_site2 <- data_trans_unsv[tmp2,]
+# step5: filter out gene in exprs_sv1 that meet the second critiera
+exprs_sv1_f <- exprs_sv1[exprs_sv1$site2_hugo_symbol %in% rownames(data_trans_unsv_site2),] # 
+head(exprs_sv1_f) # gene expression data with SV 
+# For the convenience of calculation, the expression matrix is divided into site1 and site2
+exprs_sv1_f_site1 <- exprs_sv1_f[,c("sample_id","site1_hugo_symbol","site1_count")]
+exprs_sv1_f_site2 <- exprs_sv1_f[,c("sample_id","site2_hugo_symbol","site2_count")]
+# step6: compare the gene expression, we have the following variables to compare
+# data_trans_unsv_site1: site1 gene expression for sample without SV
+# data_trans_unsv_site2: site2 gene expression for sample without SV
+# exprs_sv1_f_site1: site1 gene expression for sample with SV
+# exprs_sv1_f_site2: site2 gene expression for sample with SV
+# 6.1 calculate the mean gene expression of sample without SV
+rowmeans_unsv_site1 <- rowMeans(data_trans_unsv_site1)
+rowmeans_unsv_site2 <- rowMeans(data_trans_unsv_site2)
+# 6.2 compare the gene expression of site1 and site2 individually
+a <- which(exprs_sv1_f_site1$site1_count > rowmeans_unsv_site1)
+b <- which(exprs_sv1_f_site2$site2_count > rowmeans_unsv_site2)
+# 6.3 return the result
+result_SV <- exprs_sv1_f[intersect(a,b),c("site1_hugo_symbol","site2_hugo_symbol")]
+return(result_SV)
+}
+cat("The result is as follows.")
+SVs_selection(data_sv,sample_sv[1],sample_unsv,data_trans,exprs_sv1)
+SVs_selection(data_sv,sample_sv[2],sample_unsv,data_trans,exprs_sv2)
 ```
